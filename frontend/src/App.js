@@ -7,6 +7,8 @@ import StudentDashboard from './components/student/Dashboard';
 import Unauthorized from './components/common/Unauthorized';
 import PrivateRoute from './components/auth/PrivateRoute';
 import LandingPage from './components/LandingPage';
+import CourseForm from './components/admin/CourseForm';
+import CourseManagement from './components/admin/CourseManagement';
 import './App.css';
 
 function App() {
@@ -26,6 +28,30 @@ function App() {
             element={
               <PrivateRoute allowedRoles={['admin']}>
                 <AdminDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin/courses"
+            element={
+              <PrivateRoute allowedRoles={['admin']}>
+                <CourseManagement />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin/course/new"
+            element={
+              <PrivateRoute allowedRoles={['admin']}>
+                <CourseForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin/course/edit/:id"
+            element={
+              <PrivateRoute allowedRoles={['admin']}>
+                <CourseForm />
               </PrivateRoute>
             }
           />

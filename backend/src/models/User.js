@@ -25,6 +25,23 @@ const userSchema = new mongoose.Schema({
     enum: ['student', 'admin'],
     default: 'student'
   },
+  enrolledCourses: [{
+    course: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Course'
+    },
+    enrollmentDate: {
+      type: Date,
+      default: Date.now
+    },
+    progress: {
+      type: Number,
+      default: 0
+    },
+    completedModules: [{
+      type: Number
+    }]
+  }],
   createdAt: {
     type: Date,
     default: Date.now
